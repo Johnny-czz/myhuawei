@@ -1,0 +1,124 @@
+<!DOCTYPE html><html lang=en><head><meta charset=UTF-8><meta name=viewport content="width=device-width,initial-scale=1"><meta http-equiv=X-UA-Compatible content="ie=edge"><meta name=referrer content=never><title>Document</title><link rel=stylesheet href=../bootstrap-3.3.7-dist/css/bootstrap.min.css><link rel=stylesheet href=../jquery-pagination/pagination.css><link rel=stylesheet href=../css/base.css><link rel=stylesheet href=../css/list.css><style>.M-box a{color:red}.M-box .active{color:#00f}</style></head><body><h1>我是一个列表页面</h1><div class=M-box></div><div class=container><ul></ul></div><script src=../js/jquery.min.js></script><script src=../jquery-pagination/jquery.pagination.js></script><script>// 1,获取浏览器地址栏中的参数
+    let str = decodeURIComponent(window.location.search);
+    str = str.substr(1);
+    // 数组的 0索引 对应的是 键名,也就是字段名称
+    // 数组的 1索引 对应的是 数据,也就是字段数据
+    // 根据数据,进行查询操作
+    const arr = str.split('=');
+
+
+
+    // 2,发送ajax请求
+    // 查询的数据内容过多,要做分页查询
+    // 前端通过插件,实现分页的页面解构,通过点击分页按钮,实现分页查询
+    // 页面显示,第一次默认显示的是,第一页的内容
+    // 之后根据分页显示,来显示对应页面的内容
+
+    // 第一次调用函数,查询的是第一页的内容,参数是1
+    getAjax(1);
+
+    // 设定一个函数,是发送ajax请求的函数
+    // 每次发送函数,有对应的请求页数参数
+    // 第一次发送请求,显示的是第一页的内容,参数就是1
+    function getAjax(page){
+        $.ajax({
+          url : '../server/goods_list.php',
+          // 实际项目中的传参,也是根据后端规定而设定的
+          // 数据1,是 分类名称 cat_one_id
+          // 数据2,是 当前页数 page
+          // 数据3,是 数据数量 line
+          // 
+          data : {
+            cat_one_id : arr[1],  // 前端url地址中,分类名称数据
+            page : page,          // 当前页数,也就是函数的参数
+            line : 8,             // 每页显示的数据数量,根据项目需求而定
+          },
+          type : 'get',
+          dataType : 'json',
+          success : function(res){
+            console.log(res);
+            // 根据请求结果,生成页面,也就是li标签
+            // 最终直接将定义好的li标签,写入ul即可
+            // 数据内容中
+            // row: "40"    一共插叙了多少条数据
+            // sumPage: 5   一共有多少页
+            // 在超链接中,定义url地址,定义传参参数
+            // item中 goods_id 是数据的id主键值,是唯一的不重复的数据
+            // 传参这个数据,在详情页列表中,进行查询工作
+            let str = '';
+            res.forEach(function(item){
+              str += `<li class="list-item">
+                        <div class="panel panel-primary">
+                          <div class="panel-body">
+                            <ol class="breadcrumb">
+                              <li><a href="#">${item.cat_one_id}</a></li>
+                              <li><a href="#">${item.cat_two_id}</a></li>
+                              <li class="active">${item.cat_three_id}</li>
+                            </ol>
+                          </div>
+                          <div class="panel-footer">
+                            <div class="row">
+                              <div class="">
+                                <div class="thumbnail">
+                                  <img
+                                    src="${item.goods_big_logo}" alt="...">
+                                  <div class="caption">
+                                    <h3>${item.goods_name}</h3>
+                                    <p>
+                                      <i class="glyphicon glyphicon-yen"></i>
+                                      <span>${item.goods_price}</span>
+                                    </p>
+                                    <p>
+                                      <a href="javascript:;" class="btn btn-primary" role="button">查找相似商品</a>
+                                      <a href="./detail.html?goods_id=${item.goods_id}" class="btn btn-danger" role="button">查看商品详情</a></p>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </li>`;
+                
+            })
+            // 循环遍历结束,将str内容,写入到ul中
+            $('ul').html(str);
+
+            // 根据查询结果,来设定分页显示内容了
+
+            // 实现,分页显示
+            // 如果要设定分页显示的数据内容
+            // 只要有一个分页,至少会有一条数据
+            // 也就是至少会存在 res[0]数据
+            $('.M-box').pagination({
+              mode: 'fixed',               // 固定显示的页面数量
+              pageCount : res[0].sumPage,  // 总页数 
+              totalData : res[0].row,      // 总数据数量
+              current : res[0].page,       // 当前页数
+              showData : 8,                // 每页数据数量
+              activeCls : 'active',        // 点中标签的样式
+              coping: true,                // 显示首页末页
+              homePage: '首页',            // 首页的文字内容
+              endPage: '末页',             // 末页的文字内容
+              prevContent: '上页',         // 上页的文字内容
+              nextContent: '下页',         // 下页的文字内容
+              callback : function(result){    // 点击的时候,触发的程序
+                // 获取当前的页数
+                let p = result.getCurrent();  // 获取当前点击的按钮,所表示的下一次请求的页数
+                // 这个页数,就是下次请求的参数
+                getAjax(p);                   // 点击时,再次发送ajax请求,参数是点击的按钮,表示的页数
+              }
+            });
+          }
+        })
+    }
+
+    // 总结
+    // 1,获取浏览器地址栏的数据
+    //   作为ajax的查询数据
+    // 2,定义 函数,执行ajax请求
+    //   第一次请求,参数是1,也就是请求第一页的内容
+    // 3,请求成功,success的函数中
+    //   来根据请求的结果,定义 分页显示插件
+    //   分页显示插件中的 callback 方法
+    //   获取 当前点击的页数
+    //   作为点击时,请求的参数 getAjax(参数)</script></body></html>

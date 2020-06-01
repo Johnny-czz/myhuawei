@@ -1,0 +1,1 @@
+"use strict";$("#main .message-phone-phone input").focus(function(){$("#main .message-phone-phone").css({border:"1px blue solid"})}).blur(function(){$("#main .message-phone-phone").css({border:"1px solid transparent"})});

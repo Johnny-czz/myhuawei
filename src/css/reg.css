@@ -1,0 +1,97 @@
+/* reset */
+*{ margin:0; padding:0;}
+ul,ol{ list-style: none;}
+img{ display: block;}
+a{ text-decoration: none;}
+h1,h2,h3,h4{ font-size:14px;}
+/* common */
+.l{ float:left;}
+.r{ float:right;}
+.clear:after{ content:""; display: block; clear:both;}
+.container{ width:1202px; margin:0 auto; position: relative;}
+.container-fluid{ position: relative;}
+
+
+/* header */
+#header{ height: 48px; background: #f2f2f2; border-top: 1px solid #dadce0;}
+#header img{ float: left; margin: 10px 16px 0 4px;}
+#header span:first-of-type{ color: #c2c2c2; font-size: 20px; line-height: 42px;}
+#header span:last-of-type{ color: #191919; font-size: 16px; font-weight: bolder; margin-left: 14px;}
+
+
+/* main reg */
+#main{ height: 864px; color:#191919;}
+#main .reg{ height: 100%; width: 380px; line-height: 50px;}
+#main .reg .phone{ margin-top: 40px; height: 50px; width: 272px; background-color: #f2f2f2; border-radius: 10px;}
+#main .phone span:first-of-type{ margin-left: 44px; font-size: 16px; color: #4f4f4f; cursor: pointer;}
+#main .phone span:last-of-type{ cursor: pointer;}
+#main .reg  .email{ height: 50px; width: 272px; border-radius: 10px;}
+#main .email span:first-of-type{ margin-left: 44px; font-size: 16px; color: #4f4f4f;cursor: pointer;}
+#main .email span:last-of-type{ cursor: pointer;}
+#main .reg .phone:hover{ background-color: #e5f2ff;}
+#main .reg .email:hover{ background-color: #e5f2ff;}
+
+/* main message */
+#main .message{ width: 442px; height: 100%;}
+#main .message h1{ text-align: center; margin-top: 70px; font-size: 32px; line-height: 46px; font-weight: normal; color: #191919;}
+#main .message p{ text-align: center; font-size: 18px; line-height: 32px; }
+#main .message p a{ color: #007dff;}
+#main .message p a span{ font-weight: bolder;}
+
+#main .message-country{ margin: 55px 0 9px 0; height: 50px; background-color: #f2f2f2; border-radius: 10px; font-size: 14px; line-height: 50px;}
+#main .message-country .l{ margin-left: 16px;}
+#main .message-country .r{ margin-right: 16px; cursor: pointer;}
+
+/* 样式统一处理 */
+#main .type{ height: 50px; margin: 19px 0 9px 0; background-color: #f2f2f2; border-radius: 10px; font-size: 14px; float: left; width: 442px; border: 1px solid transparent;}
+
+#main .message-phone-phone .region{ border-right: 1px solid #d9d9d9; height: 28px; margin-top: 11px; line-height: 28px; padding-right: 18px;}
+#main .message-phone-phone .region span:first-of-type{ margin-left: 16px; cursor: pointer;}
+#main .message-phone-phone input{ width: 270px; height: 20px; margin: 15px 0 0 16px; border: none; background-color: #f2f2f2;  outline: none; caret-color: #007dff;}
+
+#main .message-vc-vc{ position: relative;}
+#main .message-vc-vc input{ width: 270px; height: 20px; margin: 18px 0 0 16px; border: none; background-color: #f2f2f2;  outline: none; caret-color: #007dff;}
+#main .message-vc-vc span,#vc{ position: absolute; top: 17px; font-size: 14px; color: rgba(0,125,255,.5); cursor:pointer;}
+#main .message-vc-vc #vc{ right: 18px;outline: none; border: none;}
+#main .message-vc-vc span{ right: 110px; color: rgba(0,125,255,1);}
+
+#main .message-password-psw{ position: relative;} 
+#main .message-password-psw input{ width: 270px; height: 20px; margin: 18px 0 0 16px; border: none; background-color: #f2f2f2;  outline: none; caret-color: #007dff;}
+#main .message-password-psw #eye{ position: absolute; right: 18px; top: 15px; font-size: 20px; cursor:pointer; color: rgba(0, 0, 0, .5);}
+
+#main .message-password2-psw{ position: relative;}
+#main .message-password2-psw input{ width: 270px; height: 20px; margin: 18px 0 0 16px; border: none; background-color: #f2f2f2;  outline: none; caret-color: #007dff;}
+#main .message-password2-psw #eye{ position: absolute; right: 18px; top: 15px; font-size: 20px; cursor:pointer; color: rgba(0, 0, 0, .5);}
+
+#main .message-date{ position: relative;}
+#main .message-date .l{ font-size: 14px; line-height: 50px; margin-left: 16px;}
+#main .message-date .r{ font-size: 14px; line-height: 50px; margin-right: 16px; cursor: pointer;}
+#main .message-date .warn-icon{ position: absolute; top: 18px; right: -32px; color: #808080; cursor: pointer;} 
+#main .message-date .warn-triangle{ width: 6px; height: 6px; border: 6px solid transparent; border-right: 6px solid #e5e5e5; box-sizing: border-box; position: absolute; top: 20px; right: -40px; display: none;}
+#main .message-date .warn-box{ width: 210px; height: 60px; background-color: #e5e5e5; position: absolute; top: 0; right: -250px; border-radius: 10px; padding: 12px; font-size: 15px; box-sizing: border-box; display: none;}
+#main .warn-icon:hover + .warn-triangle{ display: block;}
+#main .warn-icon:hover ~ .warn-box{ display: block;}
+
+
+#main #btn{ width: 308px; height: 48px; background-color: rgba(0,125,255,.3); margin: 58px 0 0 65px; border: 1px #ececec solid; border-radius: 10px; outline: none; cursor: pointer; font-size: 18px; color: white;}
+
+
+/* 对错误的统一处理 */
+#main .warning{ height: 20px; font-size: 14px; color: red; line-height: 20px; display: none; float: left;}
+#main .warning span:first-of-type{ font-size: 4px; margin-left: 12px; margin-right: 4px;}
+
+
+
+
+
+/* footer */
+#footer{ text-align: center; height: 100px; background-color: #f2f2f2; overflow: hidden;}
+#footer .footer-nav{ margin-top: 35px;}
+#footer .footer-nav span{ font-size: 14px; line-height: 18px;}
+#footer .footer-nav a{ height: 18px; color: #000;padding: 0 16px 0 16px;border-left: 1px solid #d9e2e9;}
+#footer .footer-nav span:first-of-type a{ border-left: none; }
+#footer p{ font-size: 14px; color: #aaa; line-height: 32px;}
+
+
+
+
