@@ -1,0 +1,39 @@
+*{ margin:0; padding:0;}
+ul,ol{ list-style: none;}
+img{ display: block;}
+a{ text-decoration: none;}
+h1,h2,h3,h4{ font-size:14px;}
+
+.l{ float:left;}
+.r{ float:right;}
+.clear:after{ content:""; display: block; clear:both;}
+.container{ width:1200px; margin:0 auto; position: relative;}
+.container-fluid{ position: relative;}
+
+#header{ height: 36px; background-color: #2e2828;}
+#header li span.iconfont{ line-height: 36px; font-size: 12px; cursor: pointer;}
+#header li{ line-height: 36px; float: left;  font-size: 12px; color: #afafaf; }
+#header li::before{ content: '|'; font-size: 10px; position: relative; bottom: 0px; padding: 0 8px; color: #414141;}
+#header ul li:nth-of-type(1)::before{ content: none;}
+#header li a{ color: #afafaf;}
+#header li a:hover{ color: white; cursor: pointer;}
+#header li a:hover+span{ color: white;}
+
+#nav{ height: 74px; border: transparent 1px solid; box-sizing:border-box; }
+#nav .logo{ width: 200px; height: 40px; margin-top: 17px; cursor: pointer;}
+#nav .logo img{ width: 100%; height: 100%;}
+#nav .quidway{ width: 74px; height: 24px; border-radius: 12px; margin-top: 25px; background-color: rgb(255, 132, 134); color: white; font-size: 14px; text-align: center; line-height: 24px; margin-left: 40px; cursor: pointer;}
+#nav .glory{ background-color: rgb(116, 199, 255); margin-left: 24px;}
+#nav .quidway:hover{ background-color: rgba(255, 132, 134, .7);}
+#nav .glory:hover{ background-color: rgba(116, 199, 255, .7);}
+#nav ul{ height: 40px; margin-top: 17px;}
+#nav ul li{ height: 100%; line-height: 40px; text-align: center; font-size: 16px; color: #333; margin-left: 25px; float: left; cursor: pointer;}
+#nav ul li:hover{ color: #cf0a2c;}
+#nav .search{ position: relative;}
+#nav .search input{ width: 240px; height: 30px; border-radius: 15px; border: none; outline: none; background-color: #f0f0f0; position: relative; top: 23px; right: 2px; z-index: 100;}
+#nav .search .placeholder{ font-size: 12px; color: #999; position: absolute; right: 42px; top: 29px; z-index: 999;}
+#nav .search .iconfont{ font-size: 16px; color: #3f3f3f; position: absolute; right: 15px; top: 29px; z-index: 999; cursor: pointer;}
+#nav .search .placeholder:hover{ color: #3f3f3f;}
+#nav .search div{ width: 280px; height: 32px; border-radius: 15px; border: none; background-color: #f0f0f0; position: absolute; right: 1px; top: 22px;}
+#nav .search div:hover{ border: 1px solid #999;}
+#nav .search input:hover+div{ border: 1px solid #999;}
