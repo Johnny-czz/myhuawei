@@ -8,6 +8,8 @@ let regStr = {
     pwd2: false
 }
 
+var eye = false;  // 眼睛能不能点击的全局变量(开关)
+
 $(function () {
     // 用户名验证
     phoneFront($('#main .message-phone-phone input'), $('#main .message-phone-phone'));
@@ -58,8 +60,7 @@ function phoneFront(input, borderColor) {
         onOff = 1;
 
         // 不能返回 改数据,改数据就要重新输入确认密码
-        $('#main .message-password2-psw input').val('');
-        $('#btn').prop({disabled:true}).css({backgroundColor:'rgba(0,125,255,.3)'});        
+        pwd2Eye();        
     })
 }
 
@@ -128,8 +129,7 @@ function vcFront(input, borderColor) {
         // 电话号中不能输入数字外别的东西
         $(this).val($(this).val().replace(/[^0-9]+/g, ''));
 
-        $('#main .message-password2-psw input').val('');
-        $('#btn').prop({disabled:true}).css({backgroundColor:'rgba(0,125,255,.3)'});
+        pwd2Eye();
     })
 }
 
@@ -172,8 +172,7 @@ function pswFront(input, borderColor) {
         borderColor.css({ 'border': '1px #007dff solid' }).next().css({ display: 'none' });
         onOff = 1;
 
-        $('#main .message-password2-psw input').val('');
-        $('#btn').prop({disabled:true}).css({backgroundColor:'rgba(0,125,255,.3)'});
+        pwd2Eye();
     }).next().click(function () {
         if (eye == true) {
             if ($(this).prev().prop('type') == 'password') {
@@ -187,8 +186,7 @@ function pswFront(input, borderColor) {
 }
 
 // 确认密码验证(必须和密码一样)
-function psw2Front(input, borderColor) {
-    var eye = false;  // 眼睛能不能点击的全局变量(开关)
+function psw2Front(input, borderColor) {  
     let onOff = 0; // 获取光标边框颜色
     input.focus(function () {
         if (onOff == 0) {
@@ -248,7 +246,13 @@ function psw2Front(input, borderColor) {
     })
 }
 
-
+// 清空确认密码，改变btn按钮点击状态
+function pwd2Eye(){
+    $('#main .message-password2-psw input').val('').next().css({ color: 'rgba(0, 0, 0, .5)' }).removeClass('iconyanjing_unactive');
+    $(this).prop({ type: 'password' })
+    eye = false;;
+    $('#btn').prop({disabled:true}).css({backgroundColor:'rgba(0,125,255,.3)'});
+}
 
 // 注册
 function reg(){

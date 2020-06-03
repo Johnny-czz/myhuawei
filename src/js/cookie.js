@@ -8,7 +8,7 @@ function setCookies(key, value, t) {
     // path是定义cookie的作用域,也就是cookie定义在哪个文件夹下
     // 如果 只写 path=/ 是定义在 www文件夹中
     // 如果 是其他文件夹 要写 www 下的相对路径
-    document.cookie = `${key}=${value};expires=${time};path=/off-line/huawei_project`;
+    document.cookie = `${key}=${value};expires=${time};path=/off-line/myhuawei`;
 }
 
 // 2,获取cookie数据函数

@@ -4,205 +4,91 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <!-- 正确显示来源于网络的图片 -->
-  <meta name="referrer" content="never">
-  <title>Document</title>
-  <link rel="stylesheet" href="../bootstrap-3.3.7-dist/css/bootstrap.min.css">
-  <link rel="stylesheet" href="../jquery-pagination/pagination.css">
-  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../lib/jquery-pagination/pagination.css">
+  <link rel="shortcut icon" href="https://www.vmall.com/favicon.ico">
+  <link rel="stylesheet" href="../icon_font/iconfont.css">
   <link rel="stylesheet" href="../css/list.css">
-  <style>
-      .M-box a{
-        color: red;
-      }
-
-      .M-box .active{
-        color: blue;
-      }
-  </style>
+  <title>华为商城-列表页</title>
 </head>
 
 <body>
-  <h1>我是一个列表页面</h1>
-
-  <!-- 所有的插件都是一样的 
-       都是通过插件的js程序,在定义的标签中,写入html内容
-       其他都是 a标签, 点中的标签是 span标签
-  -->
-  <div class="M-box"></div>
-
-
-  <div class="container">
-    <!-- 内容是动态生成的 -->
-    <ul>
-      <!-- <li class="list-item">
-        <div class="panel panel-primary">
-          <div class="panel-body">
-            <ol class="breadcrumb">
-              <li><a href="#">一级分类</a></li>
-              <li><a href="#">二级分类</a></li>
-              <li class="active">三级分类</li>
-            </ol>
-          </div>
-          <div class="panel-footer">
-            <div class="row">
-              <div class="">
-                <div class="thumbnail">
-                  <img
-                    src="https://g-search3.alicdn.com/img/bao/uploaded/i4/i3/2898933862/O1CN01ExuNHp1eOq9TKoRh6_!!2898933862.jpg_580x580Q90.jpg_.webp"
-                    alt="...">
-                  <div class="caption">
-                    <h3>商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述商品描述</h3>
-                    <p>
-                      <i class="glyphicon glyphicon-yen"></i>
-                      <span>1234.56</span>
-                    </p>
-                    <p><a href="javascript:;" class="btn btn-primary" role="button">查找相似商品</a> <a href="#"
-                        class="btn btn-danger" role="button">查看商品详情</a></p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </li> -->
-    </ul>
+  <!-- header -->
+  <div id="header" class="container-fluid">
+    <div class="container clear">
+      <ul class="l clear">
+        <li><a href="JavaScript:;">首页</a> </li>
+        <li><a href="JavaScript:;">华为官网</a> </li>
+        <li><a href="JavaScript:;">荣耀官网</a> </li>
+        <li><a href="JavaScript:;">花粉俱乐部</a></li>
+        <li><a href="JavaScript:;">V码(优购码)</a> </li>
+        <li><a href="JavaScript:;">企业购</a> </li>
+        <li><a href="JavaScript:;">Select Region</a> </li>
+        <li><a href="JavaScript:;">更多精彩</a> <span class="iconfont iconarrow-down1 active"></span></li>
+      </ul>
+      <ol class="r clear">
+        <li><a href="./login.html">请登录</a></li>
+        <li><a href="./reg.html">注册</a> </li>
+        <li><a href="JavaScript:;">我的订单</a> </li>
+        <li><a href="JavaScript:;">客户服务</a> <span class="iconfont iconarrow-down1 active"></span></li>
+        <li><a href="JavaScript:;">网站导航</a> <span class="iconfont iconarrow-down1 active"></span></li>
+        <li><a href="JavaScript:;">手机版 </a> <span class="iconfont iconarrow-down1 active"></span></li>
+        <li><a href="JavaScript:;">购物车</a> <span class="iconfont icongouwuche active"></span></li>
+      </ol>
+    </div>
   </div>
 
-  <script src="../js/jquery.min.js"></script>
-  <!-- 导入插件的js文件 -->
-  <script src="../jquery-pagination/jquery.pagination.js"></script>
-  <script>
-    // 1,获取浏览器地址栏中的参数
-    let str = decodeURIComponent(window.location.search);
-    str = str.substr(1);
-    // 数组的 0索引 对应的是 键名,也就是字段名称
-    // 数组的 1索引 对应的是 数据,也就是字段数据
-    // 根据数据,进行查询操作
-    const arr = str.split('=');
+  <!-- nav -->
+  <div id="nav" class="container clear">
+    <div class="logo l">
+      <img src="../images/index1.png" alt="logo">
+    </div>
+    <div class="quidway l">华为专区</div>
+    <div class="glory quidway l">荣耀专区</div>
+    <ul class="l clear">
+      <li>华为 P40 系列</li>
+      <li>荣耀30系列</li>
+      <li>安心居家</li>
+    </ul>
+    <div class="search r ">
+      <input type="text"> <span class="placeholder">荣耀X10 nova7 5G</span>
+      <span class="iconfont iconsousuo"></span>
+      <div></div>
+    </div>
+  </div>
 
 
+  <!-- main -->
+  <div id="main" class="container-fluid">
+    <div class="container">
+      <ul id="main-ul" class="clear">
+       
+      </ul>
+    </div>
+  </div>
 
-    // 2,发送ajax请求
-    // 查询的数据内容过多,要做分页查询
-    // 前端通过插件,实现分页的页面解构,通过点击分页按钮,实现分页查询
-    // 页面显示,第一次默认显示的是,第一页的内容
-    // 之后根据分页显示,来显示对应页面的内容
+  <!-- 分页器 -->
+  <div id="paging" class="container-fluid">
+    <div class="M-box container"></div>
+  </div>
+  
 
-    // 第一次调用函数,查询的是第一页的内容,参数是1
-    getAjax(1);
-
-    // 设定一个函数,是发送ajax请求的函数
-    // 每次发送函数,有对应的请求页数参数
-    // 第一次发送请求,显示的是第一页的内容,参数就是1
-    function getAjax(page){
-        $.ajax({
-          url : '../server/goods_list.php',
-          // 实际项目中的传参,也是根据后端规定而设定的
-          // 数据1,是 分类名称 cat_one_id
-          // 数据2,是 当前页数 page
-          // 数据3,是 数据数量 line
-          // 
-          data : {
-            cat_one_id : arr[1],  // 前端url地址中,分类名称数据
-            page : page,          // 当前页数,也就是函数的参数
-            line : 8,             // 每页显示的数据数量,根据项目需求而定
-          },
-          type : 'get',
-          dataType : 'json',
-          success : function(res){
-            console.log(res);
-            // 根据请求结果,生成页面,也就是li标签
-            // 最终直接将定义好的li标签,写入ul即可
-            // 数据内容中
-            // row: "40"    一共插叙了多少条数据
-            // sumPage: 5   一共有多少页
-            // 在超链接中,定义url地址,定义传参参数
-            // item中 goods_id 是数据的id主键值,是唯一的不重复的数据
-            // 传参这个数据,在详情页列表中,进行查询工作
-            let str = '';
-            res.forEach(function(item){
-              str += `<li class="list-item">
-                        <div class="panel panel-primary">
-                          <div class="panel-body">
-                            <ol class="breadcrumb">
-                              <li><a href="#">${item.cat_one_id}</a></li>
-                              <li><a href="#">${item.cat_two_id}</a></li>
-                              <li class="active">${item.cat_three_id}</li>
-                            </ol>
-                          </div>
-                          <div class="panel-footer">
-                            <div class="row">
-                              <div class="">
-                                <div class="thumbnail">
-                                  <img
-                                    src="${item.goods_big_logo}" alt="...">
-                                  <div class="caption">
-                                    <h3>${item.goods_name}</h3>
-                                    <p>
-                                      <i class="glyphicon glyphicon-yen"></i>
-                                      <span>${item.goods_price}</span>
-                                    </p>
-                                    <p>
-                                      <a href="javascript:;" class="btn btn-primary" role="button">查找相似商品</a>
-                                      <a href="./detail.html?goods_id=${item.goods_id}" class="btn btn-danger" role="button">查看商品详情</a></p>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </li>`;
-                
-            })
-            // 循环遍历结束,将str内容,写入到ul中
-            $('ul').html(str);
-
-            // 根据查询结果,来设定分页显示内容了
-
-            // 实现,分页显示
-            // 如果要设定分页显示的数据内容
-            // 只要有一个分页,至少会有一条数据
-            // 也就是至少会存在 res[0]数据
-            $('.M-box').pagination({
-              mode: 'fixed',               // 固定显示的页面数量
-              pageCount : res[0].sumPage,  // 总页数 
-              totalData : res[0].row,      // 总数据数量
-              current : res[0].page,       // 当前页数
-              showData : 8,                // 每页数据数量
-              activeCls : 'active',        // 点中标签的样式
-              coping: true,                // 显示首页末页
-              homePage: '首页',            // 首页的文字内容
-              endPage: '末页',             // 末页的文字内容
-              prevContent: '上页',         // 上页的文字内容
-              nextContent: '下页',         // 下页的文字内容
-              callback : function(result){    // 点击的时候,触发的程序
-                // 获取当前的页数
-                let p = result.getCurrent();  // 获取当前点击的按钮,所表示的下一次请求的页数
-                // 这个页数,就是下次请求的参数
-                getAjax(p);                   // 点击时,再次发送ajax请求,参数是点击的按钮,表示的页数
-              }
-            });
-          }
-        })
-    }
-
-    // 总结
-    // 1,获取浏览器地址栏的数据
-    //   作为ajax的查询数据
-    // 2,定义 函数,执行ajax请求
-    //   第一次请求,参数是1,也就是请求第一页的内容
-    // 3,请求成功,success的函数中
-    //   来根据请求的结果,定义 分页显示插件
-    //   分页显示插件中的 callback 方法
-    //   获取 当前点击的页数
-    //   作为点击时,请求的参数 getAjax(参数)
+  <!-- footer -->
+  <div id="footer" class="container-fluid">
+    <div class="container">
+      <div class="footer-nav">
+        <span><a href="JavaScript:;">华为帐号与云空间用户协议</a></span>
+        <span><a href="JavaScript:;">关于华为帐号与云空间隐私的声明</a></span>
+        <span><a href="JavaScript:;">常见问题</a></span>
+        <span><a href="JavaScript:;">Cookies</a></span>
+      </div>
+      <p>Copyright © 2011-2020 华为软件技术有限公司 版权所有 保留一切权利 苏B2-20070200号 | 苏ICP备09062682号-9</p>
+    </div>
+  </div>
 
 
-
-
-  </script>
+  <script src="../lib/jquery.min.js"></script>
+  <script src="../lib/jquery-pagination/jquery.pagination.js"></script>
+  <script src="../js/list.js"></script>
 </body>
 
 </html>

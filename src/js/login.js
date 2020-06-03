@@ -43,11 +43,19 @@ function phoneFront(input, borderColor) {
         borderColor.css({ 'border': '1px #007dff solid' }).prev().children().css({ display: 'none' });
         // 电话号中不能输入数字外别的东西
         $(this).val($(this).val().replace(/[^0-9]+/g, ''));
-        $('#main .main-login-pwd input').val('');
         onOff = 1;
+
+        pwdEye();
     })
 }
 
+// 清空确认密码，改变btn按钮点击状态
+function pwdEye(){
+    $('#main .main-login-pwd input').val('').next().css({ color: 'rgba(0, 0, 0, .5)' }).removeClass('iconyanjing_unactive');
+    $(this).prop({ type: 'password' })
+    eye = false;;
+    $('#btn').prop({disabled:true}).css({backgroundColor:'rgba(202,20,29,.3)'});
+}
 
 // 密码验证
 function pswFront(input, borderColor) {
@@ -119,7 +127,7 @@ function login(){
         dataType: 'json',
         success: function (res) {
             if (res == 1) {
-                setCookies($('#main .main-login-name input').val(), '1', 7*24*60*60)
+                setCookies('login' ,$('#main .main-login-name input').val() , 7*24*60*60)
                window.location.href = '../index.html';
             }
         }
