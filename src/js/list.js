@@ -1,3 +1,8 @@
+// 登录
+$('[name="btn"]').click(function(){
+    window.location.href = `./login.html?${window.location.href}`;
+  })
+
 let str = decodeURIComponent(window.location.search);
 str = str.substr(1);
 const arr = str.split('=');
@@ -22,6 +27,7 @@ function getAjax(page) {
               <p>${item.goods_name}</p>
               <p>￥<span>${item.goods_price}</span></p>
               <span>暂无评价</span>
+              <a href="./detail.html?goods_id=${item.goods_id}">查看商品详情</a>
             </li>`;
 
             })
@@ -48,3 +54,6 @@ function getAjax(page) {
         }
     })
 }
+
+
+

@@ -37,3 +37,33 @@ $('.nav-ol>li').mouseenter(function(){
 }).mouseleave(function(){
     $(this).removeClass('active').parent().prev().css({borderRadius:'10px'}).find('li').removeClass('active')
 })
+
+
+// 登录
+$('[name="login"]').click(function(){
+    window.location.href = `./pages/login.html?${window.location.href}`;
+  })
+
+// 退出登录
+$('[name="back"]').click(function(){
+    setCookies('username' , '1' , -1);
+    window.alert('您已经退出登录了');
+  })
+
+// 购物车判断
+console.log($('[name="car"]'))
+$('[name="car"]').click(function(){
+    console.log($('[name="car"]'))
+    const cookieObj = getCookieObj(document.cookie);
+    if( cookieObj.username === undefined ){
+        let bool = window.confirm('您还没有登录,点击确定,跳转登录页面');
+        if(bool === true){
+          window.location.href = `./pages/login.html?${window.location.href}`;
+        }else{
+          return false;
+        }
+    }else {
+        window.location.href = `./pages/cart.html`;
+    }
+})
+

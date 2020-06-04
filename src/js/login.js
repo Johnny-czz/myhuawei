@@ -127,8 +127,11 @@ function login(){
         dataType: 'json',
         success: function (res) {
             if (res == 1) {
-                setCookies('login' ,$('#main .main-login-name input').val() , 7*24*60*60)
-               window.location.href = '../index.html';
+                let str = decodeURIComponent(window.location.search);
+                str = str.substr(1);
+                window.location.href = str;
+                setCookies('username' ,$('#main .main-login-name input').val() , 7*24*60*60)
+                
             }
         }
     })

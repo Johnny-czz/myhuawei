@@ -265,7 +265,7 @@ function reg(){
         dataType: 'json',
         success: function (res) {
             if (res == 1) {
-               window.location.href = './login.html';
+               window.location.href = "../index.html";
             }
         }
     })
